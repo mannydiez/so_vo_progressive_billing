@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="view_sale_advance_payment_inv_vo_progressive_billing" model="ir.ui.view">
+            <field name="name">Invoice Orders - Inherit for VO Progressive Billing</field>
+            <field name="model">sale.advance.payment.inv</field>
+            <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='deposit_taxes_id']" position="after">
+                    <label for="vo_progressive_bill_per" attrs="{'invisible': [('advance_payment_method', '!=', 'vo_progress_bill')]}"/>
+                    <div attrs="{'invisible': [('advance_payment_method', '!=', 'vo_progress_bill')]}">
+                        <field name="vo_progressive_bill_per"
+                            attrs="{'required': [('advance_payment_method', '=', 'vo_progress_bill')]}" class="oe_inline"/>
+                        <label string="%%"
+                            attrs="{'invisible': [('advance_payment_method', '!=', 'vo_progress_bill')]}" class="oe_inline"/>
+                    </div>
+                </xpath>
+    		</field>
+    	</record>
+
+    </data>
+</odoo>

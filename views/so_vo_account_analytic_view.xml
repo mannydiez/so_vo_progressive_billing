@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="so_vo_prog_billing_variation_order">
+        <field name="name">so_vo_prog_billing_variation_order</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="account_budget.view_account_analytic_account_form_inherit_budget" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <!-- <notebook> -->
+                    <page string="Variation Order">
+                        <field name="variation_table" widget="one2many_list" mode="tree" readonly="1">
+                            <tree create="false" delete="false">
+                                <field name="name" string="Variation Order Number"/>
+                                <field name="create_date" string="Created Date"/>
+                                <field name="approve_date" string="Approved Date"/>
+                                <!-- from a different variation order -->
+                                <!-- <field name="date_order" string="Approved Date"/> -->
+                                <field name="amount_total" string="Total Amount"/>
+                                <field name="state" invisible="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Budget Changes History">
+                        <field name="budget_change_hist" widget="one2many_list" mode="tree" readonly="1">
+                            <tree create="false" delete="false">
+                                <field name="name"/>
+                                <field name="types"/>
+                                <field name="reqstr_id"/>
+                                <field name="apprvr_id"/>
+                                <field name="date_apprv"/>
+                                <field name="old_amount"/>
+                                <field name="new_amount"/>
+                            </tree>
+                        </field>
+                    </page>
+                <!-- </notebook> -->
+                <!-- <field name="budget_change_hist" widget="one2many_list" mode="tree" readonly="1">
+                            <tree create="false" delete="false">
+                                <field name="name" string="Name"/>
+                                <field name="so_reference" string="Type"/>
+                                <field name="reqstr_id" string="Requester"/>
+                                <field name="approve_by" string="Approver"/>
+                                <field name="approve_date" string="Date Approved"/>
+                                <field name="original_contract_amount" string="Old Planned Amount"/>
+                                <field name="total_contract_amount_all_change" string="New Planned Amount"/>
+                            </tree>
+                        </field> -->
+                
+            </xpath>
+        </field>
+    </record>
+</odoo>
